@@ -320,6 +320,32 @@
     gtag('js', new Date());
 
     gtag('config', 'UA-113893214-1');
+
+    var dimensionValue = '';
+    ga('set', 'dimension1', dimensionValue);
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.urlParam = function (name) {
+            var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            if (results == null) {
+                return null;
+            }
+            else {
+                return decodeURI(results[1]) || 0;
+            }
+        };
+        user_is_admin = $.urlParam('user_is_admin');
+        if (user_is_admin != null) {
+            $.cookie('user_is_admin', user_is_admin, {expires: 30});
+        }
+        user_is_admin = $.cookie('the_cookie');
+        if (user_is_admin != null) {
+            ga('set', 'dimension1', user_is_admin);
+        }
+    })
 </script>
 </body>
 </html>
