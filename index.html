@@ -337,7 +337,7 @@
         if (user_is_admin != null) {
             $.cookie('user_is_admin', user_is_admin, {expires: 30});
         }
-        user_is_admin = $.cookie('the_cookie');
+        user_is_admin = $.cookie('user_is_admin');
         if (user_is_admin != null) {
             ga('set', 'dimension1', user_is_admin);
         }
