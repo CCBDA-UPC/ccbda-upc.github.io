@@ -320,8 +320,7 @@
     }
 
     gtag('js', new Date());
-
-    gtag('config', 'UA-113893214-1');
+    gtag('config', 'UA-113893214-1, '{'custom_map': {'dimension1': 'admin'}});
 
     $(document).ready(function () {
         $.urlParam = function (name) {
@@ -333,13 +332,13 @@
                 return decodeURI(results[1]) || 0;
             }
         };
-        user_is_admin = $.urlParam('user_is_admin');
-        if (user_is_admin != null) {
-            $.cookie('user_is_admin', user_is_admin, {expires: 30});
+        admin = $.urlParam('admin');
+        if (admin != null) {
+            $.cookie('admin', admin, {expires: 30});
         }
-        user_is_admin = $.cookie('user_is_admin');
-        if (user_is_admin != null) {
-            ga('set', 'dimension1', user_is_admin);
+        admin = $.cookie('admin');
+        if (admin != null) {
+            gtag('event', 'admin_dimension', {'admin': admin});
         }
     })
 </script>
