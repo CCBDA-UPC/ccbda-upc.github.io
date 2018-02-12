@@ -337,7 +337,7 @@
             $.cookie('admin', admin, {expires: 30});
         }
         admin = $.cookie('admin');
-        if (admin != null) {
+        if (admin) {
             gtag('event', 'admin_dimension', {'admin': admin});
         }
     })
